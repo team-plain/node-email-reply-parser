@@ -101,26 +101,43 @@ describe('index.js', function () {
     it('should parse a reply', function () {
         var fixture = util.getFixture('email_2.txt');
         var email = replyParser(fixture);
+        var expectedText = `Hi,
 
-        var expectedText =
-            "Hi,\n" +
-            "You can list the keys for the bucket and call delete for each. Or if you\n" +
-            "put the keys (and kept track of them in your test) you can delete them\n" +
-            "one at a time (without incurring the cost of calling list first.)\n\n" +
-            "Something like:\n\n" +
-            "        String bucket = \"my_bucket\";\n" +
-            "        BucketResponse bucketResponse = riakClient.listBucket(bucket);\n" +
-            "        RiakBucketInfo bucketInfo = bucketResponse.getBucketInfo();\n\n" +
-            "        for(String key : bucketInfo.getKeys()) {\n" +
-            "            riakClient.delete(bucket, key);\n" +
-            "        }\n\n\n" +
-            "would do it.\n\n" +
-            "See also\n\n" +
-            "http://wiki.basho.com/REST-API.html#Bucket-operations\n\n" +
-            "which says\n\n" +
-            "\"At the moment there is no straightforward way to delete an entire\n" +
-            "Bucket. There is, however, an open ticket for the feature. To delete all\n" +
-            "the keys in a bucket, you’ll need to delete them all individually.\"";
+You can list the keys for the bucket and call delete for each. Or if you
+put the keys (and kept track of them in your test) you can delete them
+one at a time (without incurring the cost of calling list first.)
+
+Something like:
+
+        String bucket = "my_bucket";
+        BucketResponse bucketResponse = riakClient.listBucket(bucket);
+        RiakBucketInfo bucketInfo = bucketResponse.getBucketInfo();
+
+        for(String key : bucketInfo.getKeys()) {
+            riakClient.delete(bucket, key);
+        }
+
+
+would do it.
+
+See also
+
+http://wiki.basho.com/REST-API.html#Bucket-operations
+
+which says
+
+"At the moment there is no straightforward way to delete an entire
+Bucket. There is, however, an open ticket for the feature. To delete all
+the keys in a bucket, you’ll need to delete them all individually."
+
+>
+> -Abhishek Kona
+>
+>
+> _______________________________________________
+> riak-users mailing list
+> riak-users@lists.basho.com
+> http://lists.basho.com/mailman/listinfo/riak-users_lists.basho.com`
 
         assert.equal(email.getVisibleText(), expectedText, 'Did not get expected visible body');
     });
@@ -129,25 +146,43 @@ describe('index.js', function () {
         var fixture = util.getFixture('email_2.txt');
         var email = replyParser(fixture, true);
 
-        var expectedText =
-            "Hi,\n" +
-            "You can list the keys for the bucket and call delete for each. Or if you\n" +
-            "put the keys (and kept track of them in your test) you can delete them\n" +
-            "one at a time (without incurring the cost of calling list first.)\n\n" +
-            "Something like:\n\n" +
-            "        String bucket = \"my_bucket\";\n" +
-            "        BucketResponse bucketResponse = riakClient.listBucket(bucket);\n" +
-            "        RiakBucketInfo bucketInfo = bucketResponse.getBucketInfo();\n\n" +
-            "        for(String key : bucketInfo.getKeys()) {\n" +
-            "            riakClient.delete(bucket, key);\n" +
-            "        }\n\n\n" +
-            "would do it.\n\n" +
-            "See also\n\n" +
-            "http://wiki.basho.com/REST-API.html#Bucket-operations\n\n" +
-            "which says\n\n" +
-            "\"At the moment there is no straightforward way to delete an entire\n" +
-            "Bucket. There is, however, an open ticket for the feature. To delete all\n" +
-            "the keys in a bucket, you’ll need to delete them all individually.\"";
+        var expectedText = `Hi,
+
+You can list the keys for the bucket and call delete for each. Or if you
+put the keys (and kept track of them in your test) you can delete them
+one at a time (without incurring the cost of calling list first.)
+
+Something like:
+
+        String bucket = "my_bucket";
+        BucketResponse bucketResponse = riakClient.listBucket(bucket);
+        RiakBucketInfo bucketInfo = bucketResponse.getBucketInfo();
+
+        for(String key : bucketInfo.getKeys()) {
+            riakClient.delete(bucket, key);
+        }
+
+
+would do it.
+
+See also
+
+http://wiki.basho.com/REST-API.html#Bucket-operations
+
+which says
+
+"At the moment there is no straightforward way to delete an entire
+Bucket. There is, however, an open ticket for the feature. To delete all
+the keys in a bucket, you’ll need to delete them all individually."
+
+>
+> -Abhishek Kona
+>
+>
+> _______________________________________________
+> riak-users mailing list
+> riak-users@lists.basho.com
+> http://lists.basho.com/mailman/listinfo/riak-users_lists.basho.com`
 
         assert.equal(email, expectedText, 'Did not get expected visible body');
     });

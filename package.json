@@ -1,10 +1,10 @@
 {
-  "name": "node-email-reply-parser",
-  "version": "0.1.4",
+  "name": "@jesushernandez/node-email-reply-parser",
+  "version": "0.0.2",
   "description": "Parses emails to remove replies and other potentially unwanted data",
   "author": "Travis Ralston <travis@t2bot.io>",
   "license": "MIT",
-  "homepage": "https://github.com/t2bot/node-email-reply-parser#readme",
+  "homepage": "https://github.com/team-plain/node-email-reply-parser#readme",
   "keywords": [
     "email",
     "parser",
@@ -15,10 +15,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/t2bot/node-email-reply-parser.git"
+    "url": "git+https://github.com/team-plain/node-email-reply-parser.git"
   },
   "bugs": {
-    "url": "https://github.com/t2bot/node-email-reply-parser/issues"
+    "url": "https://github.com/team-plain/node-email-reply-parser/issues"
   },
   "engines": {
     "node": ">= 14.0.0"

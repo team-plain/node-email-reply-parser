@@ -1,4 +1,4 @@
-declare module "node-email-reply-parser" {
+declare module "@jesushernandez/node-email-reply-parser" {
   interface Fragment {
     getContent(): string;
     isSignature(): boolean;

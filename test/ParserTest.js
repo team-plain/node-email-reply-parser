@@ -132,11 +132,10 @@ describe('the Parser', function () {
         var fragments = email.getFragments();
 
         assert.equal(fragments.length, 6, 'Wrong number of fragments');
-
         assert.equal(fragments[0].getContent(), 'Hi,', 'First fragment has the wrong content');
         assert.equal(/^On [^:]+:/.test(fragments[1].getContent()), true, 'Second fragment has the wrong content');
-        assert.equal(/^You can list/.test(fragments[2].getContent()), true, 'Third fragment has the wrong content');
-        assert.equal(/^>/.test(fragments[3].getContent()), true, 'Fourth fragment has the wrong content');
+        assert.equal(/^\nYou can list/.test(fragments[2].getContent()), true, 'Third fragment has the wrong content');
+        assert.equal(/^\n>/.test(fragments[3].getContent()), true, 'Fourth fragment has the wrong content');
         assert.equal(/^_/.test(fragments[5].getContent()), true, 'Sixth fragment has the wrong content');
     });
 
@@ -447,13 +446,15 @@ describe('the Parser', function () {
         var fragments = email.getFragments();
 
         var expectedText = `here you go:
+
 > const x = 1;
+
 what do you think?
 `
         assert.equal(visibleText, expectedText, "The visible content is not right");
         assert.equal(/^here you go:$/.test(fragments[0].getContent()), true, "First fragment has wrong content");
-        assert.equal(/^> const x = 1;$/.test(fragments[1].getContent()), true, "Second fragment has wrong content");
-        assert.equal(/^what do you think?/.test(fragments[2].getContent()), true, "Third fragment has wrong content");
+        assert.equal(/^\n> const x = 1;$/.test(fragments[1].getContent()), true, "Second fragment has wrong content");
+        assert.equal(/^\nwhat do you think?/.test(fragments[2].getContent()), true, "Third fragment has wrong content");
         assert.equal(/good morning, sure why not/.test(fragments[3].getContent()), true, "Fourth fragment has wrong content");
     });
 
@@ -474,8 +475,8 @@ what do you think?
         var email = parser.parse(fixture);
         var fragments = email.getFragments();
 
-        assert.equal(/^ Gran Via, 1, 28004, Madrid$/.test(email.getVisibleText()), true)
-        assert.equal(/^ Gran Via, 1, 28004, Madrid/.test(fragments[0].getContent()), true, "First fragment has wrong content");
+        assert.equal(/^\n Gran Via, 1, 28004, Madrid$/.test(email.getVisibleText()), true)
+        assert.equal(/^\n Gran Via, 1, 28004, Madrid/.test(fragments[0].getContent()), true, "First fragment has wrong content");
         assert.equal(/^    On Wednesday, 23 February 2022/.test(fragments[1].getContent()), true, "Second fragment has wrong content");
     });
 
