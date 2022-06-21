@@ -485,7 +485,7 @@ what do you think?
         var fixture = util.getFixture("email_20.txt");
         var email = parser.parse(fixture);
         var fragments = email.getFragments();
-
+        assert.equal('On Thursday.', email.getVisibleText())
         assert.equal(/^On Thursday/.test(fragments[0].getContent()), true, "First fragment has wrong content");
         assert.equal(/> On May 17/.test(fragments[1].getContent()), true, "Second fragment has wrong content");
         assert.equal(/fix this parsing/.test(fragments[1].getContent()), true, "Second fragment has wrong content");
